@@ -11,7 +11,7 @@
 
     <title>
         
-        JaminOne | Jamin&#39;s Tech Blog
+        Architectures - JaminOne | Jamin&#39;s Tech Blog
         
     </title>
 
@@ -65,7 +65,7 @@
                     <span>TAGS</span>
                 </a>
             </li>
-            <li  class=active >
+            <li >
                 <a href="/archive">
                     <i class="iconfont icon-guidang2"></i>
                     <span>ARCHIVES</span>
@@ -87,6 +87,10 @@
             
         </ul>
     </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#A-About-high-availability"><span class="toc-text">A. About high availability</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#B-Recommended-service-for-big-data-application-architecture"><span class="toc-text">B. Recommended service for big-data application architecture</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#C-Batch-processing-vs-stream-process"><span class="toc-text">C. Batch processing vs stream process</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#D-Case-study-COVID19-Outbreak-heatmap"><span class="toc-text">D. Case study: COVID19 Outbreak heatmap</span></a></li></ol>
+</div>
     
 </div>
 
@@ -114,50 +118,47 @@
         
 
 
-<!-- 归档列表 -->
+<div class="post-container">
+    <div class="post-title">
+        Architectures
+    </div>
 
-<div class="archives-container">
-
-<div class="one-tag-list">
-                <span class="fa fa-calendar-times-o listing-seperator" id="2020">
-                    <span class="tag-text">2020</span>
-                </span>
-    <ul>
+    <div class="post-meta">
+        <span class="attr">Post：<span>2020-07-16 16:11:17</span></span>
         
-        <!-- <li class="listing-item">
-        <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-        <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-        </li> -->
-        <li >
-            <span>07-16</span>
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2020/07/16/Design-Patterns-and-Sample-Architectures/">
-                        <span>
-                            Architectures
-                        </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-        </li>
-        
-        <!-- <li class="listing-item">
-        <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-        <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-        </li> -->
-        <li >
-            <span>07-10</span>
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2020/07/10/Project-OpenCV-with-Python-to-deal-with-image-detection-and-process/">
-                        <span>
-                            Project: OpenCV with Python to deal with image detection and process
-                        </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-        </li>
-        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content no-indent">
+        <h1 id="A-About-high-availability"><a href="#A-About-high-availability" class="headerlink" title="A. About high availability"></a>A. About high availability</h1><p>Firstly and most importantly, secure HA by using the multi-AZ pattern.</p>
+<ol>
+<li>AMI </li>
+<li>Load balancer </li>
+<li>confirm the healthy state</li>
+<li>Create master and standby RDS read replica for automatic failover</li>
+<li>Use elastic Ip address. Disassociate the Elastic IP address from the original one, and associate with the new one. Easy fallback procedure.</li>
+<li>Stateless (ElastiCache, DynamoDB, store in the data store rather than web/app server)</li>
+<li>Scaling by schedule or by policy</li>
+<li>Use Amazon SQS to do the batch job</li>
+<li>Bootstrap</li>
+<li>bootstrap instance</li>
+</ol>
+<h1 id="B-Recommended-service-for-big-data-application-architecture"><a href="#B-Recommended-service-for-big-data-application-architecture" class="headerlink" title="B. Recommended service for big-data application architecture"></a>B. Recommended service for big-data application architecture</h1><p>AWS Associates Programme uses Amazon EMR with hadoop to remove performance bottleneck cause by the single-threaded C++ application, and we can also add analytic and data insight with Amazon Redshift.</p>
+<h1 id="C-Batch-processing-vs-stream-process"><a href="#C-Batch-processing-vs-stream-process" class="headerlink" title="C. Batch processing vs stream process"></a>C. Batch processing vs stream process</h1><p>Delay vs real time. It is recommended to use the later one. Kinesis is the perfect service for that.<br>Ex: Twitter Trend</p>
+<h1 id="D-Case-study-COVID19-Outbreak-heatmap"><a href="#D-Case-study-COVID19-Outbreak-heatmap" class="headerlink" title="D. Case study: COVID19 Outbreak heatmap"></a>D. Case study: COVID19 Outbreak heatmap</h1><p>Traditional method: Regional governors send data to the FTP server. It’s highly like to cause single point of failure. Aggregating data is delay and slow. AWS Kinesis can generate real time data but the payload size is limited. The global data may exceed the limit. Cloudfrond is compatible with this case, but it doesn’t cache the data. There are lots of tradeoff when you look into this case.</p>
 
-    </ul>
-</div>
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
 
+        <div id="lv-container">
+        </div>
+
+    </div>
 </div>
 
     </div>
@@ -225,7 +226,7 @@
     // We expose some of the variables needed by the front end
     window.hexo_search_path = "search.json"
     window.hexo_root = "/"
-    window.isPost = false
+    window.isPost = true
 </script>
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 <script src="/js/index.js"></script>
