@@ -11,7 +11,7 @@
 
     <title>
         
-        Architectures - JaminOne | Jamin&#39;s Tech Blog
+        AWS Design Patterns and Sample Architectures - JaminOne | Jamin&#39;s Tech Blog
         
     </title>
 
@@ -89,7 +89,7 @@
     </div>
     
         <div id="toc" class="toc-article">
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#A-About-high-availability"><span class="toc-text">A. About high availability</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#B-Recommended-service-for-big-data-application-architecture"><span class="toc-text">B. Recommended service for big-data application architecture</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#C-Batch-processing-vs-stream-process"><span class="toc-text">C. Batch processing vs stream process</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#D-Case-study-COVID19-Outbreak-heatmap"><span class="toc-text">D. Case study: COVID19 Outbreak heatmap</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#A-About-high-availability"><span class="toc-text">A. About high availability</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#B-Recommended-service-for-big-data-application-architecture"><span class="toc-text">B. Recommended service for big-data application architecture</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-Batch-processing-vs-stream-process"><span class="toc-text">C. Batch processing vs stream process</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#D-Case-study-COVID19-Outbreak-heatmap"><span class="toc-text">D. Case study: COVID19 Outbreak heatmap</span></a></li></ol>
 </div>
     
 </div>
@@ -120,7 +120,7 @@
 
 <div class="post-container">
     <div class="post-title">
-        Architectures
+        AWS Design Patterns and Sample Architectures
     </div>
 
     <div class="post-meta">
@@ -132,7 +132,7 @@
 </span>
     </div>
     <div class="post-content no-indent">
-        <h1 id="A-About-high-availability"><a href="#A-About-high-availability" class="headerlink" title="A. About high availability"></a>A. About high availability</h1><p>Firstly and most importantly, secure HA by using the multi-AZ pattern.</p>
+        <h2 id="A-About-high-availability"><a href="#A-About-high-availability" class="headerlink" title="A. About high availability"></a>A. About high availability</h2><p>Firstly and most importantly, secure HA by using the multi-AZ pattern.</p>
 <ol>
 <li>AMI </li>
 <li>Load balancer </li>
@@ -145,9 +145,10 @@
 <li>Bootstrap</li>
 <li>bootstrap instance</li>
 </ol>
-<h1 id="B-Recommended-service-for-big-data-application-architecture"><a href="#B-Recommended-service-for-big-data-application-architecture" class="headerlink" title="B. Recommended service for big-data application architecture"></a>B. Recommended service for big-data application architecture</h1><p>AWS Associates Programme uses Amazon EMR with hadoop to remove performance bottleneck cause by the single-threaded C++ application, and we can also add analytic and data insight with Amazon Redshift.</p>
-<h1 id="C-Batch-processing-vs-stream-process"><a href="#C-Batch-processing-vs-stream-process" class="headerlink" title="C. Batch processing vs stream process"></a>C. Batch processing vs stream process</h1><p>Delay vs real time. It is recommended to use the later one. Kinesis is the perfect service for that.<br>Ex: Twitter Trend</p>
-<h1 id="D-Case-study-COVID19-Outbreak-heatmap"><a href="#D-Case-study-COVID19-Outbreak-heatmap" class="headerlink" title="D. Case study: COVID19 Outbreak heatmap"></a>D. Case study: COVID19 Outbreak heatmap</h1><p>Traditional method: Regional governors send data to the FTP server. It’s highly like to cause single point of failure. Aggregating data is delay and slow. AWS Kinesis can generate real time data but the payload size is limited. The global data may exceed the limit. Cloudfrond is compatible with this case, but it doesn’t cache the data. There are lots of tradeoff when you look into this case.</p>
+<p><img src="https://raw.githubusercontent.com/JaminOne/jaminone.github.io/master/img/AWSassociatearchitecture.png" alt></p>
+<h2 id="B-Recommended-service-for-big-data-application-architecture"><a href="#B-Recommended-service-for-big-data-application-architecture" class="headerlink" title="B. Recommended service for big-data application architecture"></a>B. Recommended service for big-data application architecture</h2><p>AWS Associates Programme uses Amazon EMR with hadoop to remove performance bottleneck cause by the single-threaded C++ application, and we can also add analytic and data insight with Amazon Redshift.</p>
+<h2 id="C-Batch-processing-vs-stream-process"><a href="#C-Batch-processing-vs-stream-process" class="headerlink" title="C. Batch processing vs stream process"></a>C. Batch processing vs stream process</h2><p>Delay vs real time. It is recommended to use the later one. Kinesis is the perfect service for that.<br>Ex: Twitter Trend<br><img src="https://raw.githubusercontent.com/JaminOne/jaminone.github.io/master/img/twittertrend.jpg" alt></p>
+<h2 id="D-Case-study-COVID19-Outbreak-heatmap"><a href="#D-Case-study-COVID19-Outbreak-heatmap" class="headerlink" title="D. Case study: COVID19 Outbreak heatmap"></a>D. Case study: COVID19 Outbreak heatmap</h2><p>Traditional method: Regional governors send data to the FTP server. It’s highly like to cause single point of failure. Aggregating data is delay and slow. AWS Kinesis can generate real time data but the payload size is limited. The global data may exceed the limit. Cloudfrond is compatible with this case, but it doesn’t cache the data. There are lots of tradeoff when you look into this case.</p>
 
         
         <br />
