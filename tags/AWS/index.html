@@ -11,7 +11,7 @@
 
     <title>
         
-        AWS Design Patterns and Sample Architectures - JaminOne | Jamin&#39;s Tech Blog
+        JaminOne | Jamin&#39;s Tech Blog
         
     </title>
 
@@ -59,7 +59,7 @@
                     <span>HOME</span>
                 </a>
             </li>
-            <li >
+            <li  class=active >
                 <a href="/tags">
                     <i class="iconfont icon-biaoqian1"></i>
                     <span>TAGS</span>
@@ -88,10 +88,6 @@
         </ul>
     </div>
     
-        <div id="toc" class="toc-article">
-    
-</div>
-    
 </div>
 
 
@@ -118,56 +114,65 @@
         
 
 
-<div class="post-container">
-    <div class="post-title">
-        AWS Design Patterns and Sample Architectures
-    </div>
+<!-- 归档列表 -->
 
-    <div class="post-meta">
-        <span class="attr">Post：<span>2020-07-16 16:11:17</span></span>
-        
-        <span class="attr">Tags：/
-        
-        <a class="tag" href="/tags/#AWS" title="AWS">AWS</a>
-        <span>/</span>
-        
-        <a class="tag" href="/tags/#ACA" title="ACA">ACA</a>
-        <span>/</span>
-        
-        
-        </span>
-        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
-</span>
-</span>
-    </div>
-    <div class="post-content no-indent">
-        <p><strong>About high availability</strong><br>Firstly and most importantly, secure HA by using the multi-AZ pattern.</p>
-<ol>
-<li>AMI </li>
-<li>Load balancer </li>
-<li>confirm the healthy state</li>
-<li>Create master and standby RDS read replica for automatic failover</li>
-<li>Use elastic Ip address. Disassociate the Elastic IP address from the original one, and associate with the new one. Easy fallback procedure.</li>
-<li>Stateless (ElastiCache, DynamoDB, store in the data store rather than web/app server)</li>
-<li>Scaling by schedule or by policy</li>
-<li>Use Amazon SQS to do the batch job</li>
-<li>Bootstrap</li>
-<li>bootstrap instance</li>
-</ol>
-<p><img src="https://raw.githubusercontent.com/JaminOne/jaminone.github.io/master/img/AWSassociatearchitecture.png" alt><br><strong>Recommended service for big-data application architecture</strong><br>AWS Associates Programme uses Amazon EMR with hadoop to remove performance bottleneck cause by the single-threaded C++ application, and we can also add analytic and data insight with Amazon Redshift.</p>
-<p><strong>Batch processing vs stream process</strong><br>Delay vs real time. It is recommended to use the later one. Kinesis is the perfect service for that.<br>Ex: Twitter Trend<br><img src="https://raw.githubusercontent.com/JaminOne/jaminone.github.io/master/img/twittertrend.jpg" alt></p>
-<p><strong>Case study: COVID19 Outbreak heatmap</strong><br>Traditional method: Regional governors send data to the FTP server. It’s highly like to cause single point of failure. Aggregating data is delay and slow. AWS Kinesis can generate real time data but the payload size is limited. The global data may exceed the limit. Cloudfrond is compatible with this case, but it doesn’t cache the data. There are lots of tradeoff when you look into this case.</p>
+<div class="archives-container">
 
+<div class="one-tag-list">
+                <span class="fa fa-calendar-times-o listing-seperator" id="2020">
+                    <span class="tag-text">2020</span>
+                </span>
+    <ul>
         
-        <br />
-        <div id="comment-container">
-        </div>
-        <div id="disqus_thread"></div>
+        <!-- <li class="listing-item">
+        <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+        <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+        </li> -->
+        <li >
+            <span>07-28</span>
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            <a href="/2020/07/28/Web-Scraping-Raywhite-to-get-House-Data/">
+                        <span>
+                            Web Scraping Raywhite NZ to get Auckland House Data
+                        </span>
+            </a>
+            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+        </li>
+        
+        <!-- <li class="listing-item">
+        <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+        <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+        </li> -->
+        <li >
+            <span>07-16</span>
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            <a href="/2020/07/16/Design-Patterns-and-Sample-Architectures/">
+                        <span>
+                            AWS Design Patterns and Sample Architectures
+                        </span>
+            </a>
+            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+        </li>
+        
+        <!-- <li class="listing-item">
+        <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+        <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+        </li> -->
+        <li >
+            <span>07-10</span>
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            <a href="/2020/07/10/Project-OpenCV-with-Python-to-deal-with-image-detection-and-process/">
+                        <span>
+                            Project: OpenCV with Python to deal with image detection and process
+                        </span>
+            </a>
+            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+        </li>
+        
 
-        <div id="lv-container">
-        </div>
+    </ul>
+</div>
 
-    </div>
 </div>
 
     </div>
@@ -235,7 +240,7 @@
     // We expose some of the variables needed by the front end
     window.hexo_search_path = "search.json"
     window.hexo_root = "/"
-    window.isPost = true
+    window.isPost = false
 </script>
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 <script src="/js/index.js"></script>
