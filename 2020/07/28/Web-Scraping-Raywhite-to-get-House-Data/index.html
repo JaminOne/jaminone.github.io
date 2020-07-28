@@ -11,7 +11,7 @@
 
     <title>
         
-        Web-Scraping-Raywhite-to-get-House-Data - JaminOne | Jamin&#39;s Tech Blog
+        Web Scraping Raywhite to get House Data - JaminOne | Jamin&#39;s Tech Blog
         
     </title>
 
@@ -120,7 +120,7 @@
 
 <div class="post-container">
     <div class="post-title">
-        Web-Scraping-Raywhite-to-get-House-Data
+        Web Scraping Raywhite to get House Data
     </div>
 
     <div class="post-meta">
@@ -135,11 +135,14 @@
         <p>G-Day! It’s a windy Tuesday, but we still need to keep moving, right? Today I will share a web scraping experience by using scrapy Python framework, and I will scrape the Auckland house data from Raywhite, which could be used for future data analysis. Firstly, a huge shout out to Ben who helped me a lot in API and web scraping task at Microsoft Student Accelerator NZ. I will talk about my Data Science and Machine Learning phase 1 challenge in my next blog. Alrighty, without further ado, let’s jump to the topic.</p>
 <p>The preparation is quite simple. I created a new environment at Anaconda by installing <strong>Scrapy and Regex</strong>, and I use the VS code to fulfil this task.</p>
 <p>Firstly, I generated the scrapy project by using the command line:<br>‘scrapy genspider rw raywhite.co.nz’<br>rw is the project name and followed by an initial url. Then go the spiders file and open the rw.py file. Note that it’s better to replace the initial url with the real url we would love to do web scraping. For example, the link with applying searching condition, special sub-page, etc.</p>
-<p>There are two command lines which are useful in this task<br><strong>Run the scrapy file: </strong><br>‘scrapy crawl name’<br><strong>Create csv file with the scraping data: </strong><br>‘scrapy crawl name -o name.csv’</p>
+<p>There are two command lines which are useful in this task<br><strong>Run the scrapy file: </strong><br><code>scrapy crawl name</code><br><strong>Create csv file with the scraping data: </strong><br><code>scrapy crawl name -o name.csv</code></p>
 <p>The body of the scraping code is a <strong>parse</strong> function. Firstly, we need to find the iterative part of the page. In the Raywhite example, it’s the “Card”. A small chick to use “Element selection” feature to locate the related code on Chrome.</p>
-<p>To get all the content in each element, there is a very useful code that we should all remember:<br>‘response.xpath(‘//div[@   ]’)’</p>
+<p>To get all the content in each element, there is a very useful code that we should all remember:<br><code>response.xpath(&#39;//div[@   ]&#39;)</code></p>
 <p>Python’s string manipulation is crucial in web scraping. In this task, I use strip(), replace() and join() to fulfil the objective. The code is below:</p>
-<p>‘<br>address = card.xpath(‘./a/h5/text()’).getall()<br>            address = [x.strip() for x in address]<br>            address = [x.replace(‘\xa0’,’ ‘) for x in address]<br>            address = “, “.join(address)<br>‘</p>
+<p><code>address = card.xpath(&#39;./a/h5/text()&#39;).getall()
+            address = [x.strip() for x in address]
+            address = [x.replace(&#39;\xa0&#39;,&#39; &#39;) for x in address]
+            address = &quot;, &quot;.join(address)</code></p>
 <p>In addition, Regular Expressions is often used in webscraping in order to find the pattern of number+character combination. </p>
 <p>This is a great resource! - <a href="https://www.datacamp.com/community/tutorials/python-regular-expression-tutorial" target="_blank" rel="noopener">https://www.datacamp.com/community/tutorials/python-regular-expression-tutorial</a></p>
 <p>Otherwise here is a crash course!</p>
