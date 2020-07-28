@@ -11,7 +11,7 @@
 
     <title>
         
-        JaminOne | Jamin&#39;s Tech Blog
+        Web-Scraping-Raywhite-to-get-House-Data - JaminOne | Jamin&#39;s Tech Blog
         
     </title>
 
@@ -65,7 +65,7 @@
                     <span>TAGS</span>
                 </a>
             </li>
-            <li  class=active >
+            <li >
                 <a href="/archive">
                     <i class="iconfont icon-guidang2"></i>
                     <span>ARCHIVES</span>
@@ -87,6 +87,10 @@
             
         </ul>
     </div>
+    
+        <div id="toc" class="toc-article">
+    
+</div>
     
 </div>
 
@@ -114,65 +118,50 @@
         
 
 
-<!-- 归档列表 -->
+<div class="post-container">
+    <div class="post-title">
+        Web-Scraping-Raywhite-to-get-House-Data
+    </div>
 
-<div class="archives-container">
+    <div class="post-meta">
+        <span class="attr">Post：<span>2020-07-28 11:25:09</span></span>
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content no-indent">
+        <p>G-Day! It’s a windy Tuesday, but we still need to keep moving, right? Today I will share a web scraping experience by using scrapy Python framework, and I will scrape the Auckland house data from Raywhite, which could be used for future data analysis. Firstly, a huge shout out to Ben who helped me a lot in API and web scraping task at Microsoft Student Accelerator NZ. I will talk about my Data Science and Machine Learning phase 1 challenge in my next blog. Alrighty, without further ado, let’s jump to the topic.</p>
+<p>The preparation is quite simple. I created a new environment at Anaconda by installing <strong>Scrapy and Regex</strong>, and I use the VS code to fulfil this task.</p>
+<p>Firstly, I generated the scrapy project by using the command line:<br>‘scrapy genspider rw raywhite.co.nz’<br>rw is the project name and followed by an initial url. Then go the spiders file and open the rw.py file. Note that it’s better to replace the initial url with the real url we would love to do web scraping. For example, the link with applying searching condition, special sub-page, etc.</p>
+<p>There are two command lines which are useful in this task<br><strong>Run the scrapy file: </strong><br>‘scrapy crawl name’<br><strong>Create csv file with the scraping data: </strong><br>‘scrapy crawl name -o name.csv’</p>
+<p>The body of the scraping code is a <strong>parse</strong> function. Firstly, we need to find the iterative part of the page. In the Raywhite example, it’s the “Card”. A small chick to use “Element selection” feature to locate the related code on Chrome.</p>
+<p>To get all the content in each element, there is a very useful code that we should all remember:<br>‘response.xpath(‘//div[@   ]’)’</p>
+<p>Python’s string manipulation is crucial in web scraping. In this task, I use strip(), replace() and join() to fulfil the objective. The code is below:</p>
+<p>‘<br>address = card.xpath(‘./a/h5/text()’).getall()<br>            address = [x.strip() for x in address]<br>            address = [x.replace(‘\xa0’,’ ‘) for x in address]<br>            address = “, “.join(address)<br>‘</p>
+<p>In addition, Regular Expressions is often used in webscraping in order to find the pattern of number+character combination. </p>
+<p>This is a great resource! - <a href="https://www.datacamp.com/community/tutorials/python-regular-expression-tutorial" target="_blank" rel="noopener">https://www.datacamp.com/community/tutorials/python-regular-expression-tutorial</a></p>
+<p>Otherwise here is a crash course!</p>
+<p>“.” matches anything, ie. wildcard<br>[0-9] matches a number<br>[a-z] matches a lower case letter<br>[A-Z] matches an upper case letter<br>[a-zA-Z] matches an any letter<br>[a-zA-Z0-9] matches any alphanumeric character</p>
+<p>? means 0 or 1 instance. So [0-9]? indicates a pattern where there is 0 or 1 number</p>
+<ul>
+<li>means 1 or more instance. So [0-9]+ indicates a pattern where there is 1 or more number(s)</li>
+</ul>
+<ul>
+<li>means 0 or more instance. So [A-Z]* indicates a pattern where there is 0 or more upper case letters</li>
+</ul>
 
-<div class="one-tag-list">
-                <span class="fa fa-calendar-times-o listing-seperator" id="2020">
-                    <span class="tag-text">2020</span>
-                </span>
-    <ul>
         
-        <!-- <li class="listing-item">
-        <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-        <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-        </li> -->
-        <li >
-            <span>07-28</span>
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2020/07/28/Web-Scraping-Raywhite-to-get-House-Data/">
-                        <span>
-                            Web-Scraping-Raywhite-to-get-House-Data
-                        </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-        </li>
-        
-        <!-- <li class="listing-item">
-        <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-        <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-        </li> -->
-        <li >
-            <span>07-16</span>
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2020/07/16/Design-Patterns-and-Sample-Architectures/">
-                        <span>
-                            AWS Design Patterns and Sample Architectures
-                        </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-        </li>
-        
-        <!-- <li class="listing-item">
-        <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-        <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-        </li> -->
-        <li >
-            <span>07-10</span>
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2020/07/10/Project-OpenCV-with-Python-to-deal-with-image-detection-and-process/">
-                        <span>
-                            Project: OpenCV with Python to deal with image detection and process
-                        </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-        </li>
-        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
 
-    </ul>
-</div>
+        <div id="lv-container">
+        </div>
 
+    </div>
 </div>
 
     </div>
@@ -240,7 +229,7 @@
     // We expose some of the variables needed by the front end
     window.hexo_search_path = "search.json"
     window.hexo_root = "/"
-    window.isPost = false
+    window.isPost = true
 </script>
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 <script src="/js/index.js"></script>
