@@ -11,7 +11,7 @@
 
     <title>
         
-        Use-Linear-Regression-to-Predict-Aucklands-House-Prices - JaminOne | Jamin&#39;s Tech Blog
+        MSA Phase 1 - Use Linear Regression to Predict Auckland’s House Prices - JaminOne | Jamin&#39;s Tech Blog
         
     </title>
 
@@ -89,7 +89,7 @@
     </div>
     
         <div id="toc" class="toc-article">
-    
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Executive-Summary"><span class="toc-text">Executive Summary</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Explore-the-Initial-Data"><span class="toc-text">Explore the Initial Data</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Explore-the-Price-with-Suburb-Data"><span class="toc-text">Explore the Price with Suburb Data</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Correlation-and-Relationships"><span class="toc-text">Correlation and Relationships</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Geographic-Data-Visualization"><span class="toc-text">Geographic Data Visualization</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Analysis"><span class="toc-text">Analysis</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Conclusion"><span class="toc-text">Conclusion</span></a></li></ol>
 </div>
     
 </div>
@@ -120,11 +120,20 @@
 
 <div class="post-container">
     <div class="post-title">
-        Use-Linear-Regression-to-Predict-Aucklands-House-Prices
+        MSA Phase 1 - Use Linear Regression to Predict Auckland’s House Prices
     </div>
 
     <div class="post-meta">
         <span class="attr">Post：<span>2020-07-31 00:53:13</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#Data Science" title="Data Science">Data Science</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#Linear Regression" title="Linear Regression">Linear Regression</a>
+        <span>/</span>
+        
         
         </span>
         <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
@@ -132,7 +141,21 @@
 </span>
     </div>
     <div class="post-content no-indent">
-        
+        <h2 id="Executive-Summary"><a href="#Executive-Summary" class="headerlink" title="Executive Summary"></a>Executive Summary</h2><p>Provided by MSA team, the original dataset is about house price in Auckland, and two additional columns have been added by joining with the datasets from Stat.NZ and the University of Otago respectively, which are both reliable sources. It not only contains the basic information of the property such as land area and the number of rooms but also includes population data from census in 2018. </p>
+<p>The analysis is based on 1051 observations for each of the 17 variables. The most important attribute is the value of the property (CV), which is an approximation of value I am going to predict in the data analysis. The main house and population data is intuitive, and all of them have statistic measurement such as mean, min, max, standard error, etc. Besides, there are several geographical data that could be used to enhance visualization, providing a better interpretation for the decision-maker. However, it could be redundant because when the dataset has Suburbs, Latitude, and Longitude variables, Address becomes unnecessary, and it can be dropped in the modelling phase. Lastly, the dataset also contains the deprivation index data. It’s considered as a valuable attribute since it can be utilized for the social psychology study, and in this case, more related data needs to be collected to fulfil the task.</p>
+<p>This report has been divided into three different parts. Firstly, I will explore the data by calculating summary and descriptive statistics, following by the visualization of the correlation between the numerical variable and geographic data by grouping different suburbs within the same value range. Finally, three algorithms have been tested for the training dataset, and the best model has been selected based on the model’s accuracy.     </p>
+<h2 id="Explore-the-Initial-Data"><a href="#Explore-the-Initial-Data" class="headerlink" title="Explore the Initial Data"></a>Explore the Initial Data</h2><p>The count, mean, min and max rows are self-explanatory. The std shows the standard deviation, and the 25%, 50% and 75% rows show the corresponding percentiles. Although there are some houses with 17 bedrooms or 8 bathrooms, I still believe that they are not outliers as it could be the luxury house or for tourist rental purpose. </p>
+<p>To get a better feel of what kind of data I am dealing with, I plot a histogram for each numeric variable. Some of the histograms are left-skewed because for the SA1 unit date, it ideally has a size range of 100-200 residents.</p>
+<h2 id="Explore-the-Price-with-Suburb-Data"><a href="#Explore-the-Price-with-Suburb-Data" class="headerlink" title="Explore the Price with Suburb Data"></a>Explore the Price with Suburb Data</h2><p>Since each house has a different land area and each suburb has different home prices, I add a new price per square meter variable correlates with house value. Then I can use price per square meter’s range to get clusters of suburbs. </p>
+<h2 id="Correlation-and-Relationships"><a href="#Correlation-and-Relationships" class="headerlink" title="Correlation and Relationships"></a>Correlation and Relationships</h2><p>The correlation between the numeric columns has been plotted. The colour and digit numbers on the cell indicate the correlation values which are between -1 and 1. The graph shows that for the house price, the individual variable has little positive correlation, but it could be different when combining multiple variables. The cost of the house increases when the number of bathrooms goes up. In the meantime, you can also see some negative correlation. Coefficients close to zero indicate that there is no linear correlation.</p>
+<h2 id="Geographic-Data-Visualization"><a href="#Geographic-Data-Visualization" class="headerlink" title="Geographic Data Visualization"></a>Geographic Data Visualization</h2><p>To create a better data visualization, I create a scatter plot with latitude and longitude.</p>
+<p>I used colour code from the most expensive to the least expensive areas. If I can add an Auckland map layer, it could be more intuitive.</p>
+<h2 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h2><p>There are three machine learning models been tested to predict the house price, namely Linear Regression, Random Forest Regression and Gradient boosting, and the performance of each model is below. These algorithms were trained with 70% of the data. Testing the model with the remaining 30% of the data.</p>
+<p>Name    R squared    RMSE<br>Linear Regression    0.4365    1978728.8932<br>Random Forest Regression    0.5728    1978728.8477<br>Gradient boosting    0.5903    1978728.8512</p>
+<p>As we can see from the table, Gradient Boosting has the highest accuracy, and the model predicts the value of the property is around NZD1,978,728.</p>
+<p>From the feature importance table, we can see which features are more important in Gradient Boosting model, and the top 3 features are NZDep2018, SA1, Land Area. </p>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>The analysis shows that the house price can be predicted by current dataset and variables, but there is still large space to improve because the best model’s accuracy is less than 60%. In my opinion, the population data is not usually related to the price. Suppose we could change population data to more house info related data such as type, house of the year, facilities, etc. It could get a better result.</p>
+
         
         <br />
         <div id="comment-container">
