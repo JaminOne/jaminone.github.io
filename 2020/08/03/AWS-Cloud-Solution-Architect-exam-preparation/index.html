@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Jamin&#39;s Tech Blog">
+    <meta name="keyword" content="MyWebsite">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        AWS Cloud Solution Architect Exam Preparation 1 - JaminOne | Jamin&#39;s Tech Blog
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> Never Stop Exploring </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>Jamin Wan</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>HOME</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>TAGS</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>ARCHIVES</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>ABOUT</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>SEARCH</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">search</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> Never Stop Exploring </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        AWS Cloud Solution Architect Exam Preparation 1
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2020-08-03 22:16:19</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#AWS" title="AWS">AWS</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#ACA" title="ACA">ACA</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content no-indent">
+        <p>I recently started to prepare my AWS ACA exam, and I found out that the official modules I have learnt were way easier comparing to practice exam questions. But anyway, I will get there, and in following posts, I will share some learning points and thoughts I got from the practice exam.</p>
+<ol>
+<li><p>ElastiCache for Redis<br>ElastiCache is a fully managed in-memory data store and cache service. ElastiCache supports two open-source in-memory caching engines: Memcached and Redis.<br>Redis, which stands for Remote Dictionary Server, is a fast, open-source, in-memory key-value data store for use as a database, cache, message broker, and queue. </p>
+</li>
+<li><p>ElastiCache in-transit or at-rest encryption:  you must meet the following conditions.</p>
+</li>
+</ol>
+<p>Your cluster or replication group must be running Redis 3.2.6, 4.0.10 or later.<br>Your cluster or replication group must be created in a VPC based on Amazon VPC.<br>Optionally, you can also use AUTH and the AUTH token (password) needed to perform operations on this cluster or replication group.</p>
+<ol start="3">
+<li>Temporary credentials in AWS</li>
+</ol>
+<ul>
+<li>Setup a Federation proxy or an Identity provider</li>
+<li>Setup an AWS Security Token Service to generate temporary tokens</li>
+<li>Configure an IAM role and an IAM Policy to access the bucket.</li>
+</ul>
+<ol start="4">
+<li>increase the write performance of the database hosted in an EC2 instance</li>
+</ol>
+<ul>
+<li>increasing the size of the EC2 instance.</li>
+<li>set up a standard RAID 0 configuration<br>all RAID is accomplished at the software level. For greater I/O performance than you can achieve with a single volume, RAID 0 can stripe multiple volumes together; </li>
+</ul>
+<ol start="5">
+<li><p>HVM AMI vs PV AMI<br>Linux Amazon Machine Images use one of two types of virtualization: paravirtual (PV) or hardware virtual machine (HVM). The main differences between PV and HVM AMIs are the way in which they boot and whether they can take advantage of special hardware extensions (CPU, network, and storage) for better performance.</p>
+</li>
+<li><p>RAID 1 vs RAID 0<br>Using a standard RAID 1 configuration with two EBS Volumes is incorrect because the main use case for RAID 1 is to provide mirroring, redundancy, and fault-tolerance. RAID 0 is a more suitable option for providing faster read and write operations, compared with RAID 1.</p>
+</li>
+<li><p>S3 Pre-signed URL<br>object owner can optionally share objects with others by creating a pre-signed URL, using their own security credentials, to grant time-limited permission to download the objects.</p>
+</li>
+<li><p>Metrics not defaultly available in CloudWatch<br>certain metrics that are not readily available in CloudWatch such as memory utilization, disk space utilization, and many others which can be collected by setting up a custom metric.</p>
+</li>
+</ol>
+<ul>
+<li>Memory utilization</li>
+<li>Disk swap utilization</li>
+<li>Disk space utilization</li>
+<li>Page file utilization</li>
+<li>Log collection</li>
+</ul>
+<ol start="9">
+<li>Auto Scaling group termination policy</li>
+</ol>
+<ul>
+<li>If there are instances in multiple Availability Zones, choose the Availability Zone with the most instances and at least one instance that is not protected from scale in. If there is more than one Availability Zone with this number of instances, choose the Availability Zone with the instances that use the oldest launch configuration.</li>
+<li>Determine which unprotected instances in the selected Availability Zone use the oldest launch configuration. If there is one such instance, terminate it.</li>
+<li>If there are multiple instances to terminate based on the above criteria, determine which unprotected instances are closest to the next billing hour. (This helps you maximize the use of your EC2 instances and manage your Amazon EC2 usage costs.) If there is one such instance, terminate it.</li>
+<li>If there is more than one unprotected instance closest to the next billing hour, choose one of these instances at random.</li>
+</ul>
+<ol start="10">
+<li>How to avoid accidental deletion in Amazon S3 bucket</li>
+</ol>
+<ul>
+<li>Enable Versioning</li>
+<li>Enable MFA (Multi-Factor Authentication) Delete</li>
+</ul>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/JaminOne">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://www.linkedin.com/in/jaminwan">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-linkedin"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="https://www.10000h.top">10000H</a></span>
+        <span>/</span>
+        
+        <span><a href="#">It helps SEO</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>
