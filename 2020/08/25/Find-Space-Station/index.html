@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Jamin&#39;s Tech Blog">
+    <meta name="keyword" content="MyWebsite">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        Practice: Plot the Space Station&#39;s Location in Real Time - JaminOne | Jamin&#39;s Tech Blog
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> Never Stop Exploring </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>Jamin Wan</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>HOME</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>TAGS</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>ARCHIVES</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>ABOUT</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>SEARCH</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">search</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> Never Stop Exploring </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        Practice: Plot the Space Station's Location in Real Time
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2020-08-25 21:51:22</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#API" title="API">API</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#Pandas" title="Pandas">Pandas</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content no-indent">
+        <p>Happy birthday to myself! It has been a tough year and I am glad my study goes well. Today, let’s take a look at an easy task by using  API and Plotly to capture the International Spcade Station(ISS) location in the real time. By using the while loop and Time library, we can fetch the data in certain period of time. There are some key takeaways listed below.</p>
+<p>⋅⋅<em> When convert the dtype to datetime, the 10 digit unix code can be transfer by <strong>adding unit =’s’</strong><br>⋅⋅</em> A good way to loop through pandas dataframe is appending it into a list first and concat the whole list to dataframe.<br>⋅⋅<em> Sometimes read_json can replace Requests + json + pd.DataFrame.from_dict<br>⋅⋅</em> Plotly is a great tool to visualise the geo data. When I ploted the world map, the ISS just passed New Zealand. What a coincidence!<br><img src="https://raw.githubusercontent.com/JaminOne/hexo-aircloud-blog/master/source/img/plotly.png" alt="Plotly"></p>
+<p>Code:<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#import</span> necessary libraries</span><br><span class="line">import pandas as pd</span><br><span class="line">import json</span><br><span class="line">import datetime</span><br><span class="line">import requests</span><br><span class="line">import plotly<span class="selector-class">.express</span> as px</span><br><span class="line">import time</span><br><span class="line"></span><br><span class="line"><span class="selector-id">#visit</span> the API <span class="keyword">in</span> the certain period and get the data</span><br><span class="line"><span class="selector-tag">i</span> = <span class="number">0</span></span><br><span class="line">geo_list = [] </span><br><span class="line">while i&lt;<span class="number">10</span>:</span><br><span class="line">    r = requests.get(<span class="string">'http://api.open-notify.org/iss-now.json'</span>)</span><br><span class="line">    df_dic = r.json()</span><br><span class="line">    df = pd<span class="selector-class">.DataFrame</span><span class="selector-class">.from_dict</span>(df_dic)</span><br><span class="line">    df[<span class="string">'latitude'</span>] = df<span class="selector-class">.loc</span>[<span class="string">'latitude'</span>,<span class="string">'iss_position'</span>]</span><br><span class="line">    df[<span class="string">'longitude'</span>] = df<span class="selector-class">.loc</span>[<span class="string">'longitude'</span>,<span class="string">'iss_position'</span>]</span><br><span class="line">    df.reset_index(inplace=True)</span><br><span class="line">    df[<span class="string">'timestamp'</span>] = pd.to_datetime(df[<span class="string">'timestamp'</span>],unit=<span class="string">'s'</span>)</span><br><span class="line">    df = df.drop([<span class="string">'message'</span>,<span class="string">'index'</span>,<span class="string">'iss_position'</span>],axis=<span class="number">1</span>)</span><br><span class="line">    df = df.drop([<span class="number">1</span>])</span><br><span class="line">    geo_list.append(df)</span><br><span class="line">    <span class="selector-tag">time</span>.sleep(<span class="number">50</span>)</span><br><span class="line">    i+=<span class="number">1</span></span><br><span class="line">geo_df = pd.concat(geo_list)</span><br><span class="line"></span><br><span class="line"><span class="selector-id">#plotly</span> catter plot</span><br><span class="line">fig = px.scatter_geo(geo_df,lat=<span class="string">'latitude'</span>,lon=<span class="string">'longitude'</span>)</span><br><span class="line">fig.show()</span><br></pre></td></tr></table></figure></p>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/JaminOne">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://www.linkedin.com/in/jaminwan">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-linkedin"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="https://www.10000h.top">10000H</a></span>
+        <span>/</span>
+        
+        <span><a href="#">It helps SEO</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>
